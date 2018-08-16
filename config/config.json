@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "",
+    "password": "Socks101",
     "database": "Sams_Care",
     "host": "localhost",
     "dialect": "mysql"

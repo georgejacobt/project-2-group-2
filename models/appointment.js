@@ -5,7 +5,17 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Appointment.associate = function(models) {
+    Appointment.belongsTo(models.Admin, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
     Appointment.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+    Appointment.belongsTo(models.Pet, {
       foreignKey: {
         allowNull: false
       }
