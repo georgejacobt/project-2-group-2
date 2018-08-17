@@ -6,27 +6,27 @@ Git Master: Bonnie Birch
 
 ## Proposal
 
-App name: __Samantha's Pet and House Care__
-
-[Basic Wireframe](basicWireframe.jpg)
-
-[Workflow](workflow.jpg)
+App name: __Samantha's Pet and House Care Data Center__
 
 Group 2 would like to create a website for Dan's daughter Samantha to use with her pet- and house-sitting business. 
 
-There would be main public pages with information on pricing, services, and the ability to register as a new client. Once registered, a client will be able to update their pet/house information, add a new pet, request an appointment, and contact the administrator. On the admin side there would be a page to register/update existing clients, view/approve schedule requests, update pricing, and contact clients. 
+There would be a main public page with information on pricing, services, and the ability to register for an initial meeting. Most of the site will exist on the administrator side. Sam will have the ability to import and update existing client information, create new clients, view her appointment schedule, and view business viability information. 
 
 ### MVP
 * Landing/Home Page
 * Appointment Request
 * Responsive
-* Register/Log In
 * Contact Us
 * About Me
-* Pricing and Zone Map
-* Profile Management
+* Admin Route with Log In
+* Client Database/Tables
+* Client profile Management
+* Viability Information
+  * Revenue/Costs Charts
+  * Unique/Repeat Clients
 
 ### Extras
 * Twillio/Texting
-* Profile Pictures
+* Full Calendar
 * Social Media Connections
+* Client Log In 
