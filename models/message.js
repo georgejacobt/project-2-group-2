@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false
       }
     });
-    Message.belongsTo(models.Admin, {
+    Message.belongsTo(models.User, {
       foreignKey: {
         allowNull: false
       }

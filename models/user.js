@@ -1,19 +1,11 @@
 module.exports = function(sequelize, DataTypes) {
   let User = sequelize.define("User", {
-    first_name: DataTypes.STRING,
-    last_name: DataTypes.STRING,
+    first_name: {type: DataTypes.STRING, allowNull: false},
+    last_name: {type: DataTypes.STRING, allowNull: false},
     cell_phone: DataTypes.STRING,
     email_address: DataTypes.STRING,
-    street_address: DataTypes.STRING,
-    city: DataTypes.STRING,
-    emerg_cont_first_name: DataTypes.STRING,
-    emerg_cont_last_name: DataTypes.STRING,
-    emerg_cont_phone: DataTypes.STRING,
-    gate_code: DataTypes.STRING,
-    door_code: DataTypes.STRING,
-    alarm_code: DataTypes.STRING,
-    key_instructions: DataTypes.TEXT,
-    wifi_password: DataTypes.STRING
+    userName: DataTypes.STRING,
+    password: DataTypes.STRING
   });
   return User;
 };
