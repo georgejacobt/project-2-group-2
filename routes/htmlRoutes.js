@@ -11,6 +11,14 @@ module.exports = function(app) {
     });
   });
 
+  // Load datacenter page
+
+  app.get("/datacenter", function(req, res) {
+    res.render("datacenter", {
+      msg: "Welcome!"
+    });
+  });
+
   // Load example page and pass in an example by id
   app.get("/example/:id", function(req, res) {
     db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
