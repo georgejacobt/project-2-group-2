@@ -1,18 +1,18 @@
 module.exports = function(sequelize, DataTypes) {
-  let Home = sequelize.define("Home", {    
-    street_address1: DataTypes.STRING,
-    street_address2: DataTypes.STRING,
+  let Home = sequelize.define("Home", {
+    streetAddress1: DataTypes.STRING,
+    streetAddress2: DataTypes.STRING,
     city: DataTypes.STRING,
-    state: {type: DataTypes.STRING, defaultValue: "Tx"},
+    state: { type: DataTypes.STRING, defaultValue: "Tx" },
     zip: DataTypes.STRING,
-    emerg_cont_first_name: DataTypes.STRING,
-    emerg_cont_last_name: DataTypes.STRING,
-    emerg_cont_phone: DataTypes.STRING,
-    gate_code: DataTypes.STRING,
-    door_code: DataTypes.STRING,
-    alarm_code: DataTypes.STRING,
-    key_instructions: DataTypes.TEXT,
-    wifi_password: DataTypes.STRING
+    emergContFirstName: DataTypes.STRING,
+    emergContLastName: DataTypes.STRING,
+    emergContPhone: DataTypes.STRING,
+    gateCode: DataTypes.STRING,
+    doorCode: DataTypes.STRING,
+    alarmCode: DataTypes.STRING,
+    keyInstructions: DataTypes.TEXT,
+    wifiPassword: DataTypes.STRING
   });
 
   Home.associate = function(models) {

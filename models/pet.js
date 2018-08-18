@@ -6,13 +6,13 @@ module.exports = function(sequelize, DataTypes) {
     age: DataTypes.INTEGER,
     allergies: DataTypes.STRING,
     medication: DataTypes.STRING,
-    health_issues: DataTypes.TEXT,
-    feeding_instructions: DataTypes.TEXT,
-    vet_clinic_name: DataTypes.STRING,
-    vet_first_name: DataTypes.STRING,
-    vet_last_name: DataTypes.STRING,
-    clinic_phone: DataTypes.STRING,
-    vist_number: DataTypes.INTEGER
+    healthIssues: DataTypes.TEXT,
+    feedingInstructions: DataTypes.TEXT,
+    vetClinicName: DataTypes.STRING,
+    vetFirstName: DataTypes.STRING,
+    vetLastName: DataTypes.STRING,
+    clinicPhone: DataTypes.STRING,
+    vistNumber: DataTypes.INTEGER
   });
 
   Pet.associate = function(models) {
@@ -27,6 +27,5 @@ module.exports = function(sequelize, DataTypes) {
       }
     });
   };
-
   return Pet;
 };

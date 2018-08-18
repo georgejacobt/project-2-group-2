@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   let Message = sequelize.define("Message", {
-     note: DataTypes.STRING,
+    note: DataTypes.STRING
   });
 
   Message.associate = function(models) {
@@ -14,7 +14,7 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false
       }
     });
-  };  
+  };
 
   return Message;
 };

@@ -1,11 +1,11 @@
 module.exports = function(sequelize, DataTypes) {
   let Admin = sequelize.define("Admin", {
-    first_name: DataTypes.STRING,
-    last_name: DataTypes.STRING,
+    firstName: DataTypes.STRING,
+    lastName: DataTypes.STRING,
     password: DataTypes.STRING
   });
 
-  Admin.associate = function (models) {
+  Admin.associate = function(models) {
     Admin.hasMany(models.Appointment, {
       onDelete: "cascade"
     });
@@ -18,7 +18,7 @@ module.exports = function(sequelize, DataTypes) {
     Admin.hasMany(models.Message, {
       onDelete: "cascade"
     });
-  }
+  };
 
   return Admin;
 };
