@@ -16,6 +16,11 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Pet.associate = function(models) {
+    Pet.belongsTo(models.Admin, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
     Pet.belongsTo(models.User, {
       foreignKey: {
         allowNull: false

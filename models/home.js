@@ -16,6 +16,11 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Home.associate = function(models) {
+    Home.belongsTo(models.Admin, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
     Home.belongsTo(models.User, {
       foreignKey: {
         allowNull: false

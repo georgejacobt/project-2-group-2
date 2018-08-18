@@ -32,7 +32,6 @@ var syncOptions = { force: true };
 if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
-syncOptions.force = true;
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync({force: true}).then(function() {
   app.listen(PORT, function() {
