@@ -1,7 +1,7 @@
 (function($){
   $(function(){
 
-    $('.sidenav').sidenav();
+    $('.sidenav2').sidenav2();
 
   }); // end of document ready
 })(jQuery); // end of jQuery name space
