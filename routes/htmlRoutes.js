@@ -3,14 +3,22 @@ var db = require("../models");
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.render("index", {
-        msg: "Welcome!",
-        examples: dbExamples
-      });
+    res.render("index", {
+      msg: "Welcome!"
+    });
+  });
+  app.get("/formUser", function(req, res) {
+    res.render("formUser", {
+      msg: "Welcome!"
     });
   });
 
+  app.get("/admin", function(req, res) {
+    res.render("admin/dashboard");
+  });
+  app.get("/formPet", function(req, res) {
+    res.render("formPet");
+  });
   // Load datacenter page
 
   app.get("/datacenter", function(req, res) {
@@ -18,6 +26,7 @@ module.exports = function(app) {
       msg: "Welcome!"
     });
   });
+  /* STARTER CODE 
 
   // Load example page and pass in an example by id
   app.get("/example/:id", function(req, res) {
@@ -29,6 +38,7 @@ module.exports = function(app) {
       });
     });
   });
+  */
 
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
