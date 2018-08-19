@@ -3,17 +3,14 @@ var db = require("../models");
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.render("index", {
-        msg: "Welcome!",
-        examples: dbExamples
-      });
+    res.render("index", {
+      msg: "Welcome!"
     });
   });
 
   // Load datacenter page
 
-  app.get("/datacenter", function(req, res) {
+  app.get("/api/datacenter", function(req, res) {
     res.render("datacenter", {
       msg: "Welcome!"
     });
