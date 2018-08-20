@@ -6,3 +6,4 @@
 
 DROP DATABASE IF EXISTS sams_care;
 CREATE DATABASE sams_care;
+ 

@@ -1,133 +1,107 @@
-{{!-- ----PROVIDED STARTER CODE --- --}}
-{{!-- <div id="home">
+<div class="section no-pad-bot" id="index-banner">
   <div class="container">
+    <br>
+    <br>
+    <h1 class="header center orange-text">Samantha's Pet Care</h1>
+    <div class="row center">
+      <h5 class="header col s12 light">A one stop shop for all your pet care needs!!</h5>
+    </div>
+
+
+
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="section">
+
+    <!--   Icon Section   -->
     <div class="row">
-      <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
-        <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <label for="example-text">Example Text</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
+      <div class="col s12 m4">
+
+        <div class="card hoverable">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" src="images/generic.jpg">
           </div>
-          <div class="form-group">
-            <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4">Pet Sitting
+              <i class="material-icons right">more_vert</i>
+            </span>
           </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
-        <h3>Examples:</h3>
-        <ul id="example-list" class="list-group">
-          {{#each examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">At Our House Or Yours!
+              <i class="material-icons right">close</i>
+            </span>
+            <p>We offer a variety of pet siting services:</p>
+            <ul>
+              <li>In-Home Dog Boarding</li>
+              <li>Full Pet Care Visit</li>
+              <li>Midday Check In Visit</li>
+            </ul>
+            <p>
+              <a class="waves-effect waves-light btn" href="/petpricing">Learn More</a>
+
+            </p>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div> --}}
-{{!-- ----PROVIDED STARTER CODE END --- --}}
 
-  <div class="section no-pad-bot" id="index-banner">
-    <div class="container">
-      <br><br>
-      <h1 class="header center orange-text">Samantha's Pet Care</h1>
-      <div class="row center">
-        <h5 class="header col s12 light">A one stop shop for all your pet care needs!!</h5>
-      </div>
-      <div class="row center">
-        <a href="#" id="download-button" class="btn-large waves-effect waves-light orange">Get Started</a>
-      </div>
-  
+      <div class="col s12 m4">
+        <div class="card hoverable">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" src="images/pets.jpg">
+          </div>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4">About Sam
+              <i class="material-icons right">more_vert</i>
+            </span>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">I'm Sam!
+              <i class="material-icons right">close</i>
+            </span>
+            <p>We've been taking care of pets and homes since March 2015. We offer dog boarding, pet care services, and house-sitting
+              to fit your schedule! Our aim is to treat every pet like family and give you have peace of mind that your pet
+              and home are being well cared for while you're away.</p>
+            <p>
+              <a class="waves-effect waves-light btn" href="/aboutme">Learn More</a>
 
-    </div>
-  </div>
-
-
-  <div class="container">
-    <div class="section">
-
-      <!--   Icon Section   -->
-      <div class="row">
-        <div class="col s12 m4">
-   
-          <div class="card hoverable">
-            <div class="card-image waves-effect waves-block waves-light">
-              <img class="activator" src="images/generic.jpg">
-            </div>
-            <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4">Our Business
-                <i class="material-icons right">more_vert</i>
-              </span>
-            </div>
-            <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4">Our Business
-                <i class="material-icons right">close</i>
-              </span>
-              <p>Here is some more information about this product that is only revealed once clicked on.</p>
-               <p>
-                <a href="#">Read More..</a>
-              </p>
-            </div>
+            </p>
           </div>
         </div>
 
-        <div class="col s12 m4">
-           <div class="card hoverable">
-            <div class="card-image waves-effect waves-block waves-light">
-              <img class="activator" src="images/pets.jpg">
-            </div>
-            <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4">Pets
-                <i class="material-icons right">more_vert</i>
-              </span>
-            </div>
-            <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4">Pet Care Facility
-                <i class="material-icons right">close</i>
-              </span>
-              <p>Here is some more information about this product that is only revealed once clicked on.</p>
-               <p>
-                <a href="#">Register your pet</a>
-              </p>
-            </div>
-          </div>
 
-
-        </div>
-
-        <div class="col s12 m4">
-              <div class="card hoverable">
-            <div class="card-image waves-effect waves-block waves-light">
-              <img class="activator" src="images/home.jpg">
-            </div>
-            <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4">Homes
-                <i class="material-icons right">more_vert</i>
-              </span>
-            </div>
-            <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4">Pet Care at Home 
-                <i class="material-icons right">close</i>
-              </span>
-              <p>Here is some more information about this product that is only revealed once clicked on.</p>
-               <p>
-                <a href="#">Register your home</a>
-              </p>
-            </div>
-          </div>
-
-   
-        </div>
       </div>
 
+      <div class="col s12 m4">
+        <div class="card hoverable">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" src="images/home.jpg">
+          </div>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4">House Sitting
+              <i class="material-icons right">more_vert</i>
+            </span>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">Taking Care of Your House
+              <i class="material-icons right">close</i>
+            </span>
+            <p>We take care of your home with anything from bringing in your mail and watering your plants to full overnight
+              stays to moniter the property while you're gone.</p>
+            <p>
+              <a class="waves-effect waves-light btn" href="/homepricing">Learn More</a>
+
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
-    <br><br>
+    <div class="row center">
+      <a href="#" id="download-button" class="btn-large waves-effect waves-light orange">Register</a>
+    </div>
   </div>
-
-
-
-
+  <br>
+  <br>
+</div>
