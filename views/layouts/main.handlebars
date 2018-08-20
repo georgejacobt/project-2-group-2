@@ -98,15 +98,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 <script type="text/javascript">
 
-  $(document).ready(function () {
+ 
+
+  $('.modalBtn').on('click', function () {
     $('.modal').modal();
+      $(this).modal('open');
+    })
 
-    $('.modalBtn').on('click', function () {
-    $(this).modal('open');
-  })
-  });
 
-  
 
    // $('.modal').modal();
 </script>

@@ -6,6 +6,18 @@ module.exports = function(app) {
     res.render("index");
   });
 
+  app.get("/petpricing", function(req, res) {
+    res.render("petPricing");
+  });
+
+  app.get("/aboutme", function(req, res) {
+    res.render("aboutMe");
+  });
+
+  app.get("/homepricing", function(req, res) {
+    res.render("homePricing");
+  });
+
   // Load datacenter page
 
   app.get("/datacenter", function(req, res) {
