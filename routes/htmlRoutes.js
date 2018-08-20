@@ -12,9 +12,19 @@ module.exports = function(app) {
       msg: "Welcome!"
     });
   });
+  app.get("/subSuccess", function(req, res) {
+    res.render("subSuccess", {
+      msg: "Welcome!"
+    });
+  });
 
+  // Load dashboard and data
   app.get("/admin", function(req, res) {
-    res.render("admin/dashboard");
+    db.User.findAll({ where: { status: "new" } }).then(function(dbUser) {
+      res.render("dashboard", {
+        data: dbUser
+      });
+    });
   });
   app.get("/formPet", function(req, res) {
     res.render("formPet");
@@ -26,6 +36,19 @@ module.exports = function(app) {
       msg: "Welcome!"
     });
   });
+  app.post("/api/authors", function(req, res) {
+    db.Author.create(req.body).then(function(dbAuthor) {
+      res.json(dbAuthor);
+    });
+
+    // Create a new user
+    app.post("/api/user", function(req, res) {
+      db.User.create(req.body).then(function(dbUsers) {
+        res.json(dbUsers);
+      });
+    });
+  });
+
   /* STARTER CODE 
 
   // Load example page and pass in an example by id
