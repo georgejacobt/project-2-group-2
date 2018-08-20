@@ -6,7 +6,7 @@
     "password": "Socks101",
     "database": "Sams_Care",
 
-    "port": 3306,
+    "port": 3307,
     "dialect": "mysql"
   },
   "test": {
