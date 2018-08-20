@@ -3,11 +3,6 @@ var db = require("../models");
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
-<<<<<<< HEAD
-    res.render("index", {
-      msg: "Welcome!"
-    });
-=======
     res.render("index");
   });
 
@@ -21,7 +16,6 @@ module.exports = function(app) {
 
   app.get("/homepricing", function(req, res) {
     res.render("homePricing");
->>>>>>> f8d053a0ef3d8d0eac6d2e1ae7224751d290c942
   });
 
   // Load datacenter page
