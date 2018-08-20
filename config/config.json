@@ -1,15 +1,12 @@
+
+
 {
   "development": {
     "username": "root",
-<<<<<<< HEAD
-
-    "password": "",
-=======
     "password": "Socks101",
->>>>>>> sequelModel
     "database": "Sams_Care",
 
-    "port": 3307,
+    "port": 3306,
     "dialect": "mysql"
   },
   "test": {
