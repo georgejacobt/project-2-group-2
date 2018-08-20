@@ -1,11 +1,13 @@
+
+
 {
   "development": {
     "username": "root",
 
-    "password": "",
+    "password": "H07Do6B*!",
     "database": "Sams_Care",
 
-    "port": 3307,
+    "port": 3306,
     "dialect": "mysql"
   },
   "test": {
