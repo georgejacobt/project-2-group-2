@@ -2,8 +2,8 @@
 
 {
   "development": {
-    "username": "",
-    "password": "",
+    "username": "root",
+    "password": "Socks101",
     "database": "Sams_Care",
 
     "port": 3306,
