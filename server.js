@@ -27,6 +27,9 @@ app.set("view engine", "handlebars");
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
+require("./routes/apiRoutes")(http);
+require("./routes/apiRoutes")(MessagingResponse);
+
 var syncOptions = { force: true };
 
 // If running a test, set syncOptions.force to true
