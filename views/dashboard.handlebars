@@ -114,8 +114,8 @@
                                     <div class="card-body scroll-box">
                                         <ul class="grey-text">
                                             {{#each data}}                                            
-                                                <li>{{data.firstName}} {{data.lastName}}                      
-                                                    <a href="userProfile/{{data.id}}" id={{data.id}} class="btn-floating btn-large red"><i class="small material-icons">account_circle</i></a>
+                                                <li>{{this.firstName}} {{this.lastName}}                      
+                                                    <a href="userProfile/{{this.id}}" id="{{this.id}}" class="btn-floating btn-large red"><i class="small material-icons">account_circle</i></a>
                                                 </li>
                                             {{/each}}
                                         </ul>
@@ -160,8 +160,8 @@
                     {{#each data}}
                     <li class="item-avatar">
                         <img src="/images/business.jpg" alt="avatar" class="circle">
-                        <span class="title">{{data.firstName}}</span>
-                        <a href="userprofile/{{data.id}}" class="view blue-text">View</a> |
+                        <span class="title">{{this.firstName}}</span>
+                        <a href="userprofile/{{this.id}}" class="view blue-text">View</a> |
                         <a href="#" class="approve green-text">Approve</a> |
                         <a href="#" class="deny red-text">Deny</a>
                     </li>
