@@ -1,7 +1,6 @@
 .list-group-item {
   line-height: 2.5;
 }
-<<<<<<< HEAD
 .circle {
   width: 20px;
   height: 20px;
@@ -11,14 +10,3 @@
     height: 300px;
     padding: 1rem
 }
-=======
-
-.modal {
-  z-index: 2;
-}
-
-.card{
-  z-index: 1;
-}
-
->>>>>>> f8d053a0ef3d8d0eac6d2e1ae7224751d290c942

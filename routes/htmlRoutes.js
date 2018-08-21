@@ -3,7 +3,6 @@ var db = require("../models");
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
-<<<<<<< HEAD
     res.render("index", {
       msg: "Welcome!"
     });
@@ -17,21 +16,6 @@ module.exports = function(app) {
     res.render("subSuccess", {
       msg: "Welcome!"
     });
-=======
-    res.render("index");
-  });
-
-  app.get("/petpricing", function(req, res) {
-    res.render("petPricing");
-  });
-
-  app.get("/aboutme", function(req, res) {
-    res.render("aboutMe");
-  });
-
-  app.get("/homepricing", function(req, res) {
-    res.render("homePricing");
->>>>>>> f8d053a0ef3d8d0eac6d2e1ae7224751d290c942
   });
 
   // Load dashboard and data
