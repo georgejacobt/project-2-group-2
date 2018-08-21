@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
     vetFirstName: DataTypes.STRING,
     vetLastName: DataTypes.STRING,
     clinicPhone: DataTypes.STRING,
-    vistNumber: DataTypes.INTEGER
+    visitNumber: DataTypes.INTEGER
   });
 
   Pet.associate = function(models) {
