@@ -1,0 +1,181 @@
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+    
+    // Load the Visualization API and the piechart package.
+    google.charts.load('current', {'packages':['table']});
+      
+    // Set a callback to run when the Google Visualization API is loaded.
+    google.charts.setOnLoadCallback(drawChart);
+      
+    function drawChart() {
+        var jsonData = $.ajax({
+            url: "/api/admin",
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                //console.log(data[0].id);
+                let rows = [];
+                for(let i = 0; i < data.length; i++){
+                    let newRow = [];
+                    newRow.push(data[i].id);
+                    newRow.push(data[i].firstName);
+                    newRow.push(data[i].lastName);
+                    newRow.push(data[i].cellNumber);
+                    newRow.push(data[i].emailAddress);
+                    rows.push(newRow);
+                }
+                              
+                // Create the data table.
+                    var data = new google.visualization.DataTable();
+                    data.addColumn('number', 'ID');                
+                    data.addColumn('string', 'First Name');
+                    data.addColumn('string', 'Last Name');
+                    data.addColumn('number', 'Cell Phone');
+                    data.addColumn('string', 'Email');
+                    data.addRows(rows);
+                    
+                // Create our data table out of JSON data loaded from server.
+                // var data = new google.visualization.DataTable(jsonData);
+                    var table = new google.visualization.Table(document.getElementById('chart_div'));
+
+                    table.draw(data, {showRowNumber: false, width: '100%', height: '100%'});
+                    
+                // Instantiate and draw our chart, passing in some options.
+                // var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+                // chart.draw(data, {width: 400, height: 240});
+            },          
+            error: function (jqXHR, textStatus, errorThrown) {
+                debugger;
+                alert(textStatus, errorThrown, jqXHR);
+            }
+        });
+    };
+    </script>
+
+<!-- SIDE NAV to come. Requires pointing to new main.handlebar or creating a new solution for the mobile menu/responsiveness.
+<nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container">
+        <ul id="nav-mobile" class="sidenav2">
+            <li>
+                <a href="#">Dashboard</a>
+            </li>
+            <li>
+                <a href="#">Users</a>
+            </li>
+
+            <li>
+                <a href="#">Apointments</a>
+            </li>
+            <li>
+                <a href="#">Pets</a>
+            </li>
+            <li>
+                <a href="#">Homes</a>
+            </li>
+        </ul>
+    
+        <ul id="nav-mobile" class="sidenav2">
+            <li>
+                <a href="#">Dashboard</a>
+            </li>
+            <li>
+                <a href="#">Users</a>
+            </li>
+            <li>
+                <a href="#">Apointments</a>
+            </li>
+            <li>
+                <a href="#">Pets</a>
+            </li>
+            <li>
+                <a href="#">Homes</a>
+            </li>           
+        </ul>
+        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+        
+    </div>
+    
+</nav>
+-->
+<!-- DASHBOARD BEGINS -->
+    <section class="sction section-stats center">
+        <div class="row">
+
+            <div class="col 13 m6 s12">
+                <div class="card-panel red lighten-1 white-text">
+                    <i class="material-icons small">account_box</i> 
+                        <h5>New Users</h5>
+                            <div class="container">
+                            <div class="row">
+                                <div class="col-6">
+                                <div class="card mt-6">
+                                    <div class="card-body scroll-box">
+                                        <ul class="grey-text">
+                                            {{#each data}}                                            
+                                                <li>{{data.firstName}} {{data.lastName}}                      
+                                                    <a href="userProfile/{{data.id}}" id={{data.id}} class="btn-floating btn-large red"><i class="small material-icons">account_circle</i></a>
+                                                </li>
+                                            {{/each}}
+                                        </ul>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                </div>
+            </div>
+            <div class="col 13 m6 s12">
+                <div class="card-panel red lighten-1 white-text">
+                    <i class="material-icons small">date_range</i> 
+                        <h5>Appointments</h5>
+                        <p>
+                            Here are words about houses. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                        </p>
+                </div>
+            </div>
+            <div class="col 13 m6 s12">
+                <div class="card-panel red lighten-1 white-text">
+                    <i class="material-icons small">home</i> 
+                        <h5>Homes</h5>
+                        <h3 class="count">#</h3>
+                        <div class="progress grey lighten-1">
+                            <div class="determinate white" style="width:60%;"></div>
+                        </div>
+                </div>
+            </div>
+            <div class="col 13 m6 s12">
+                <div class="card-panel red lighten-1 white-text">
+                    <i class="material-icons small">pets</i> 
+                        <h5>Pets</h5>
+                        <h3 class="count">#</h3>
+                </div>
+            </div>
+            <div class="col 14 m6 s12 scroll-box">
+                <ul class="collection with-header pending-posts">
+                    <li class="collection-header">
+                        <h5>Users awaiting Meet &amp; Greet </h5>
+                    </li>
+                    {{#each data}}
+                    <li class="item-avatar">
+                        <img src="/images/business.jpg" alt="avatar" class="circle">
+                        <span class="title">{{data.firstName}}</span>
+                        <a href="userprofile/{{data.id}}" class="view blue-text">View</a> |
+                        <a href="#" class="approve green-text">Approve</a> |
+                        <a href="#" class="deny red-text">Deny</a>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+            <div class="col 13 m12 s12">
+                <div class="card-panel red lighten-1 white-text scroll-box">
+                    <i class="material-icons small">account_balance_wallet</i> 
+                        <h5>Business Center</h5>
+                        <div id="chart_div" class="grey-text"></div>
+                </div>
+            </div>
+        </div>          
+    </section>
+</div>
+

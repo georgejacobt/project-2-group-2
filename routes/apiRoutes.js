@@ -8,6 +8,16 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/admin", function(req, res) {
+    db.User.findAll({ where: { status: "new" } }).then(function(dbUser) {
+      res.json(dbUser);
+      console.log(dbUser);
+      for (let i = 0; i < dbUser.length; i++) {
+        console.log(JSON.stringify(dbUser[i]));
+      }
+    });
+  });
+
   // Create a new example
   app.post("/api/examples", function(req, res) {
     db.Example.create(req.body).then(function(dbExample) {
@@ -21,6 +31,17 @@ module.exports = function(app) {
       dbExample
     ) {
       res.json(dbExample);
+    });
+  });
+  app.post("/api/examples", function(req, res) {
+    db.Example.create(req.body).then(function(dbExample) {
+      res.json(dbExample);
+    });
+  });
+  // Create a new user
+  app.post("/api/user", function(req, res) {
+    db.User.create(req.body).then(function(dbUsers) {
+      res.json(dbUsers);
     });
   });
 };
