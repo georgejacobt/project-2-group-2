@@ -9,7 +9,6 @@ module.exports = function(app) {
     });
   });
 
-
   // Twillo Post
   var counter = 0;
   app.post("/sms", (req, res) => {
@@ -41,6 +40,7 @@ module.exports = function(app) {
 
     res.writeHead(200, { "Content-Type": "text/xml" });
     res.end(twiml.toString());
+  });
 
   app.get("/api/admin", function(req, res) {
     db.User.findAll({ where: { status: "new" } }).then(function(dbUser) {
@@ -50,7 +50,6 @@ module.exports = function(app) {
         console.log(JSON.stringify(dbUser[i]));
       }
     });
-
   });
 
   // Create a new example
@@ -89,5 +88,4 @@ module.exports = function(app) {
       res.json(dbUsers);
     });
   });
-
 };
