@@ -1,4 +1,5 @@
 var db = require("../models");
+const MessagingResponse = require("twilio").twiml.MessagingResponse;
 
 module.exports = function(app) {
   // Get all examples
@@ -8,6 +9,39 @@ module.exports = function(app) {
     });
   });
 
+
+  // Twillo Post
+  var counter = 0;
+  app.post("/sms", (req, res) => {
+    const twiml = new MessagingResponse();
+    let from = req.body.From;
+    let body = req.body.Body;
+    console.log(from);
+    console.log(body);
+
+    if (counter === 0) {
+      twiml.message(
+        "Hi, Welcome! Are you looking for pet care , home sitting or both..?"
+      );
+      counter = counter + 1;
+    } else {
+      if ((counter === 1) & (body === "pet care")) {
+        twiml.message(
+          "Great, we offer excellent pet care options, woould you like for sam to call you back for a meet and greet.."
+        );
+        counter = counter + 1;
+      }
+    }
+    if ((counter === 2) & (body === "yes")) {
+      twiml.message("OK, I wil have Sam call you back at " + from);
+      counter = counter + 1;
+    }
+
+    console.log(counter);
+
+    res.writeHead(200, { "Content-Type": "text/xml" });
+    res.end(twiml.toString());
+
   app.get("/api/admin", function(req, res) {
     db.User.findAll({ where: { status: "new" } }).then(function(dbUser) {
       res.json(dbUser);
@@ -16,13 +50,23 @@ module.exports = function(app) {
         console.log(JSON.stringify(dbUser[i]));
       }
     });
+
   });
 
   // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
-    });
+  app.post("/api/datacenter", function(req, res) {
+    dataset = req.body.csvData;
+    console.log(dataset[0]);
+    console.log(typeof dataset);
+    res.json("dbcreated");
+
+    for (var i = 0; i < dataset.length - 1; i++) {
+      db.Admin.create(dataset[i]).then(function() {
+        // We have access to the new todo as an argument inside of the callback function
+        // res.json(dbTodo);
+        console.log("data inserted");
+      });
+    }
   });
 
   // Delete an example by id
@@ -33,6 +77,7 @@ module.exports = function(app) {
       res.json(dbExample);
     });
   });
+
   app.post("/api/examples", function(req, res) {
     db.Example.create(req.body).then(function(dbExample) {
       res.json(dbExample);
@@ -44,4 +89,5 @@ module.exports = function(app) {
       res.json(dbUsers);
     });
   });
+
 };

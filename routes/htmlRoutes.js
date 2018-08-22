@@ -31,7 +31,7 @@ module.exports = function(app) {
   });
   // Load datacenter page
 
-  app.get("/datacenter", function(req, res) {
+  app.get("/api/datacenter", function(req, res) {
     res.render("datacenter", {
       msg: "Welcome!"
     });
