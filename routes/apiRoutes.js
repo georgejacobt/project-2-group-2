@@ -9,6 +9,7 @@ module.exports = function(app) {
     });
   });
 
+
   // Twillo Post
   var counter = 0;
   app.post("/sms", (req, res) => {
@@ -40,6 +41,16 @@ module.exports = function(app) {
 
     res.writeHead(200, { "Content-Type": "text/xml" });
     res.end(twiml.toString());
+
+  app.get("/api/admin", function(req, res) {
+    db.User.findAll({ where: { status: "new" } }).then(function(dbUser) {
+      res.json(dbUser);
+      console.log(dbUser);
+      for (let i = 0; i < dbUser.length; i++) {
+        console.log(JSON.stringify(dbUser[i]));
+      }
+    });
+
   });
 
   // Create a new example
@@ -67,12 +78,16 @@ module.exports = function(app) {
     });
   });
 
-  // app.post('/sms', (req, res) => {
-  //   const twiml = new MessagingResponse();
+  app.post("/api/examples", function(req, res) {
+    db.Example.create(req.body).then(function(dbExample) {
+      res.json(dbExample);
+    });
+  });
+  // Create a new user
+  app.post("/api/user", function(req, res) {
+    db.User.create(req.body).then(function(dbUsers) {
+      res.json(dbUsers);
+    });
+  });
 
-  //   twiml.message('Hi, Welcome! Are you looking for pet care , home sitting or both..?');
-
-  //   res.writeHead(200, {'Content-Type': 'text/xml'});
-  //   res.end(twiml.toString());
-  // });
 };

@@ -2,8 +2,15 @@
 {
   "development": {
     "username": "root",
+
+    "password": "@129655lkn*",
+    "database": "sams_care",
+
+  "development": {
+    "username": "root",
     "password": "Socks101",
     "database": "Sams_Care",
+
 
     "port": 3307,
     "dialect": "mysql"
@@ -20,4 +27,5 @@
     "use_env_variable": "JAWSDB_URL",
     "dialect": "mysql"
   }
+}
 }
