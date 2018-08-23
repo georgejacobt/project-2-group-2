@@ -38,7 +38,7 @@ console.log(passport.authenticate);
 // Routes
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
-app.use("/api", require("./routes/apiRoutes.js")(passport));
+app.use("/api", require("./routes/apiAuthRoutes.js")(passport));
 
 const syncOptions = { force: true };
 

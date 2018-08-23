@@ -1,26 +1,5 @@
 const db = require("../models");
 // const config = require("../config/config.js");
-const router = require("express").Router();
-const AuthController = require("../controllers/authController.js");
-const jwt = require("jsonwebtoken");
-
-const APIAdminRoutes = function(passport) {
-  console.log(passport.authenticate);
-  router.post("/signup", AuthController.signUp);
-  router.post("/authenticate", AuthController.authenticateUser);
-  router.get(
-    "/adminPage",
-    passport.authenticate("jwt", { session: false }),
-    allowOnly(config.accessLevels, UserController.index)
-  );
-  // router.get(
-  //   "/adminPage",
-  //   passport.authenticate("jwt", { session: false }),
-  //   allowOnly(config.accessLevels, AdminController.index)
-  // );
-
-  return router;
-};
 
 module.exports = function(app) {
   // Get all examples
@@ -66,6 +45,4 @@ module.exports = function(app) {
       res.json(dbUsers);
     });
   });
-}
-
-// APIAdminRoutes;
+};
