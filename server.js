@@ -1,16 +1,30 @@
 require("dotenv").config();
-var express = require("express");
-var bodyParser = require("body-parser");
-var exphbs = require("express-handlebars");
+const express = require("express");
+const bodyParser = require("body-parser");
+const exphbs = require("express-handlebars");
+const morgan = require("morgan");
+// const sequelize = require("sequelize");
+const passport = require("passport");
+// const jwt = require("jsonwebtoken");
 
-var db = require("./models");
-var app = express();
-var PORT = process.env.PORT || 3000;
+//chuck some app related modules here
+const hookJWTStrategy = require("./services/passportStrategy");
+
+const db = require("./models");
+const app = express();
+const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
+
+//http request logger
+app.use(morgan("dev"));
+
+//hooking up passport
+app.use(passport.initialize());
+hookJWTStrategy(passport);
 
 // Handlebars
 app.engine(
@@ -20,12 +34,13 @@ app.engine(
   })
 );
 app.set("view engine", "handlebars");
-
+console.log(passport.authenticate);
 // Routes
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
+app.use("/api", require("./routes/apiRoutes.js")(passport));
 
-var syncOptions = { force: true };
+const syncOptions = { force: true };
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
