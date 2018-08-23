@@ -10,10 +10,10 @@ const allowOnly = require("../services/routesHelper.js").allowOnly;
 const APIAdminRoutes = function(passport) {
   router.post("/signup", AuthController.signUp);
   router.post("/authenticate", AuthController.authenticateUser);
-  router.get(
-    "/adminPage",
+  router.post(
+    "/hello",
     passport.authenticate("jwt", { session: false }),
-    allowOnly(UserController.adminPage)
+    allowOnly(UserController.index)
   );
 
   return router;

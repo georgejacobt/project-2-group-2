@@ -1,14 +1,15 @@
 "use strict";
 
-var JWTStrategy = require("passport-jwt").Strategy,
-  ExtractJwt = require("passport-jwt").ExtractJwt;
-var Admins = require("./../models/admin.js"),
-  config = require("../config/config.js");
+const JWTStrategy = require("passport-jwt").Strategy;
+const ExtractJwt = require("passport-jwt").ExtractJwt;
+const config = require("../config/config.js");
+const models = require("../models");
+
 
 // Hooks the JWT Strategy.
 // Hooks the JWT Strategy.
 function hookJWTStrategy(passport) {
-  var options = {};
+  const options = {};
 
   options.secretOrKey = config.keys.secret;
   options.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme("jwt");
@@ -16,13 +17,13 @@ function hookJWTStrategy(passport) {
 
   passport.use(
     new JWTStrategy(options, function(JWTPayload, callback) {
-      Admins.findOne({ where: { username: JWTPayload.username } }).then(
+      models.Admin.findOne({ where: { username: JWTPayload.username } }).then(
         function(user) {
           if (!user) {
             callback(null, false);
             return;
           }
-
+          console.log("I'm using this strategy!");
           callback(null, user);
         }
       );

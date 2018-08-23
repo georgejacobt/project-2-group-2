@@ -2,10 +2,8 @@
 
 // The user controller.
 var UserController = {
-  adminPage: function(req, res) {
-    if (error) {
-      throw error;
-    }
+  index: function(req, res) {
+    console.log("am i even here");
     res.status(200).json({
       message: "Welcome to the users area " + req.user.username + "!"
     });
