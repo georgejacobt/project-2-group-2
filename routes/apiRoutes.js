@@ -1,5 +1,5 @@
 var db = require("../models");
-// const MessagingResponse = require("twilio").twiml.MessagingResponse;
+const MessagingResponse = require("twilio").twiml.MessagingResponse;
 
 module.exports = function(app) {
   // Get all examples
