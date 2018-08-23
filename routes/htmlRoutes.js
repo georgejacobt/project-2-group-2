@@ -7,6 +7,17 @@ module.exports = function(app) {
       msg: "Welcome!"
     });
   });
+
+  app.get("/petpricing", function(req, res) {
+    res.render("petPricing");
+  });
+  app.get("/aboutme", function(req, res) {
+    res.render("aboutMe");
+  });
+  app.get("/homepricing", function(req, res) {
+    res.render("homePricing");
+  });
+
   app.get("/formUser", function(req, res) {
     res.render("formUser", {
       msg: "Welcome!"

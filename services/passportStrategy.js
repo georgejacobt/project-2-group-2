@@ -5,7 +5,6 @@ const ExtractJwt = require("passport-jwt").ExtractJwt;
 const config = require("../config/config.js");
 const models = require("../models");
 
-
 // Hooks the JWT Strategy.
 // Hooks the JWT Strategy.
 function hookJWTStrategy(passport) {

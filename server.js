@@ -3,9 +3,9 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const exphbs = require("express-handlebars");
 const morgan = require("morgan");
-const sequelize = require("sequelize");
+// const sequelize = require("sequelize");
 const passport = require("passport");
-const jwt = require("jsonwebtoken");
+// const jwt = require("jsonwebtoken");
 
 //chuck some app related modules here
 const hookJWTStrategy = require("./services/passportStrategy.js");
