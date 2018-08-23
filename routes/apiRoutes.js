@@ -44,4 +44,31 @@ module.exports = function(app) {
       res.json(dbUsers);
     });
   });
+  //Get completed payments
+  app.get("/api/revenue", function(req, res) {
+    db.Appointment.findAll({ where: { complete: 1 } }).then(function(
+      dbAppointment
+    ) {
+      let payedPets = [];
+      let petTotal = 0;
+      let payedHomes = [];
+      let homeTotal = 0;
+      for (let i = 0; i < dbAppointment.length; i++) {
+        if (dbAppointment[i].type === false) {
+          payedPets.push(dbAppointment[i]);
+          petTotal += parseFloat(dbAppointment[i].rate, 11);
+        } else {
+          payedHomes.push(dbAppointment[i]);
+          homeTotal += parseFloat(dbAppointment[i].rate, 11);
+        }
+      }
+      let obj = {
+        pets: payedPets,
+        homes: payedHomes,
+        petTotal: petTotal,
+        homeTotal: homeTotal
+      };
+      res.render("payments", obj);
+    });
+  });
 };
