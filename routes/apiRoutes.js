@@ -54,7 +54,7 @@ module.exports = function(app) {
       let payedHomes = [];
       let homeTotal = 0;
       for (let i = 0; i < dbAppointment.length; i++) {
-        if (dbAppointment[i].type === false) {
+        if (dbAppointment[i].type === false) {          
           payedPets.push(dbAppointment[i]);
           petTotal += parseFloat(dbAppointment[i].rate, 11);
         } else {
@@ -62,16 +62,38 @@ module.exports = function(app) {
           homeTotal += parseFloat(dbAppointment[i].rate, 11);
         }
       }
+      console.log("---------")
+      payedPets = convertToShortDate(payedPets);
       let obj = {
         pets: payedPets,
         homes: payedHomes,
         petTotal: petTotal,
         homeTotal: homeTotal
       };
+      
+      //console.log(payedPets[0])
+      //let x = convertToShortDate(dbAppointment[i].date);
+          // console.log(x);
+      
       res.render("payments", obj);
       // for (let i = 0; i < dbAppointment.length; i++) {
       //   console.log(JSON.stringify(dbAppointment[i]));
       // }
     });
   });
+
+  function convertToShortDate(arr) {
+    //console.log(arr);
+    // let arr1 = arr.map(function(x) {
+    //   let x1 = x;
+    //   x1.date = x.date.getFullYear()+'-' +(x.date.getMonth()+1) + '-'+x.date.getDate();
+    //   return x1;
+    // });
+    arr.forEach(function(item, index) {
+      console.log(arr[index].date);
+      item.date = arr[index].date.getFullYear()+'-' +(arr[index].date.getMonth()+1) + '-'+arr[index].date.getDate();
+    })
+    console.log(arr);
+    return arr;
+  }
 };
