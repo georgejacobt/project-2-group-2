@@ -60,7 +60,7 @@ module.exports = function(app) {
     res.json("dbcreated");
 
     for (var i = 0; i < dataset.length - 1; i++) {
-      db.Admin.create(dataset[i]).then(function() {
+      db.User.create(dataset[i]).then(function() {
         // We have access to the new todo as an argument inside of the callback function
         // res.json(dbTodo);
         console.log("data inserted");
