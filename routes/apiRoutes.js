@@ -54,7 +54,7 @@ module.exports = function(app) {
       let payedHomes = [];
       let homeTotal = 0;
       for (let i = 0; i < dbAppointment.length; i++) {
-        if (dbAppointment[i].type === false) {          
+        if (dbAppointment[i].type === false) {
           payedPets.push(dbAppointment[i]);
           petTotal += parseFloat(dbAppointment[i].rate, 11);
         } else {
@@ -62,7 +62,7 @@ module.exports = function(app) {
           homeTotal += parseFloat(dbAppointment[i].rate, 11);
         }
       }
-      console.log("---------")
+      console.log("---------");
       payedPets = convertToShortDate(payedPets);
       let obj = {
         pets: payedPets,
