@@ -1,0 +1,24 @@
+<section class="section section-stats center">
+    <div class="row">
+        <div class="col 13 m11 s12">
+            <div class="card-panel">
+                <h4>Pets</h4>
+                {{#each pets}}
+                <p>
+                <span>When: {{this.date}}   Payment:  {{this.rate}}</span>
+                </p>
+                {{/each}}
+                <span>Total:  {{petTotal}}</span>
+            </div>
+            <div class="card-panel">
+                <h4>Homes</h4>
+                {{#each homes}}
+                <p>
+                <span>When: {{this.date}}   Payment:  {{this.rate}}</span>
+                </p>
+                {{/each}}
+                <span>Total:  {{homeTotal}}</span>
+            </div>
+        </div>
+    </div>
+</section>
