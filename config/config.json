@@ -5,11 +5,14 @@
 
     "password": "@129655lkn*",
     "database": "sams_care",
+<<<<<<< HEAD
 
   "development": {
     "username": "root",
     "password": "Socks101",
     "database": "Sams_Care",
+=======
+>>>>>>> 38c3877d6c0611b2b1dc2ff429c77a458495695e
 
 
     "port": 3307,
