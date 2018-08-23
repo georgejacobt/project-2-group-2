@@ -21,14 +21,34 @@ module.exports = function(app) {
   // Load dashboard and data
   app.get("/admin", function(req, res) {
     db.User.findAll({ where: { status: "new" } }).then(function(dbUser) {
-      res.render("dashboard", {
+      res.render("admin/dashboard", {
         data: dbUser
       });
     });
   });
-  app.get("/formPet", function(req, res) {
-    res.render("formPet");
+  // Load profile page and pass in an user by id
+  app.get("/userProfileAdmin/:id", function(req, res) {
+    db.User.findOne({
+      where: { id: req.params.id }
+    }).then(function(dbUser) {
+      res.render("admin/userProfileAdmin", {
+        data: dbUser
+      });
+      console.log(dbUser);
+    });
   });
+  // Pet/Home form for user ID.
+  app.get("/formPet/:id", function(req, res) {
+    res.render("admin/formPet", {
+      data: req.params.id
+    });
+  });
+  app.get("/formHome/:id", function(req, res) {
+    res.render("admin/formHome", {
+      data: req.params.id
+    });
+  });
+
   // Load datacenter page
 
   app.get("/datacenter", function(req, res) {
@@ -40,14 +60,14 @@ module.exports = function(app) {
     db.Author.create(req.body).then(function(dbAuthor) {
       res.json(dbAuthor);
     });
-
-    // Create a new user
-    app.post("/api/user", function(req, res) {
-      db.User.create(req.body).then(function(dbUsers) {
-        res.json(dbUsers);
-      });
+  });
+  // Create a new user
+  app.post("/api/user", function(req, res) {
+    db.User.create(req.body).then(function(dbUsers) {
+      res.json(dbUsers);
     });
   });
+ 
 
   /* STARTER CODE 
 

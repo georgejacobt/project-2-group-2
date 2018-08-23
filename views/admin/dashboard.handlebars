@@ -115,7 +115,7 @@
                                         <ul class="grey-text">
                                             {{#each data}}                                            
                                                 <li>{{this.firstName}} {{this.lastName}}                      
-                                                    <a href="userProfile/{{this.id}}" id="{{this.id}}" class="btn-floating btn-large red"><i class="small material-icons">account_circle</i></a>
+                                                    <a href="/admin/userProfileAdmin/{{this.id}}" id="{{this.id}}" class="btn-floating btn-large red"><i class="small material-icons">account_circle</i></a>
                                                 </li>
                                             {{/each}}
                                         </ul>
@@ -155,13 +155,17 @@
             <div class="col 14 m6 s12 scroll-box">
                 <ul class="collection with-header pending-posts">
                     <li class="collection-header">
-                        <h5>Users awaiting Meet &amp; Greet </h5>
+                        <h5>New Users waiting Meet&amp;Greet </h5>
                     </li>
+
                     {{#each data}}
-                    <li class="item-avatar">
+                    <li class="collection-item item-avatar">
                         <img src="/images/business.jpg" alt="avatar" class="circle">
-                        <span class="title">{{this.firstName}}</span>
-                        <a href="userprofile/{{this.id}}" class="view blue-text">View</a> |
+                        <span class="title">{{this.firstName}}</span> 
+                        <span class="title">{{this.lastName}}</span> ||
+                        <span class="title">{{this.cellPhone}}</span> ||
+                        <span class="title">{{this.emailAddress}}</span> ||
+                        <a href="/userProfileAdmin/{{this.id}}" class="view blue-text">View</a> |
                         <a href="#" class="approve green-text">Approve</a> |
                         <a href="#" class="deny red-text">Deny</a>
                     </li>

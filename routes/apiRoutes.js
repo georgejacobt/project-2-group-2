@@ -44,4 +44,16 @@ module.exports = function(app) {
       res.json(dbUsers);
     });
   });
+  // Create a new pet
+  app.post("/api/pet", function(req, res) {
+    db.Pet.create(req.body).then(function(dbPet) {
+      res.json(dbPet);
+    });
+  });
+  // Create a new home
+  app.post("/api/home", function(req, res) {
+    db.Home.create(req.body).then(function(dbHome) {
+      res.json(dbHome);
+    });
+  });
 };
