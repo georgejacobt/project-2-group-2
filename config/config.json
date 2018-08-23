@@ -1,19 +1,10 @@
 
-<<<<<<< HEAD
 {
   "development": {
     "username": "root",
 
     "password": "@129655lkn*",
     "database": "sams_care",
-=======
-
-{
-  "development": {
-    "username": "root",
-    "password": "Socks101",
-    "database": "Sams_Care",
->>>>>>> f8d053a0ef3d8d0eac6d2e1ae7224751d290c942
 
     "port": 3306,
     "dialect": "mysql"
