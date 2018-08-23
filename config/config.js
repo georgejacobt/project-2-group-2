@@ -16,9 +16,6 @@ module.exports = {
     "use_env_variable": "JAWSDB_URL",
     "dialect": "mysql"
   }
-<<<<<<< HEAD
-};
-=======
 };
 
 const config = module.exports;
@@ -38,4 +35,3 @@ config.db.details = {
 config.keys = {
   secret: process.env.SECRET
 };
->>>>>>> 38c3877d6c0611b2b1dc2ff429c77a458495695e
