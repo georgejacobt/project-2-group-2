@@ -29,13 +29,50 @@ module.exports = function(app) {
   // Load profile page and pass in an user by id
   app.get("/userProfileAdmin/:id", function(req, res) {
     db.User.findOne({
+      include: [
+        {
+          model: db.Pet
+        },
+        {
+          model: db.Home
+        }
+      ],
       where: { id: req.params.id }
     }).then(function(dbUser) {
+      console.log(dbUser.Homes[0].city);
       res.render("admin/userProfileAdmin", {
         data: dbUser
       });
-      console.log(dbUser);
     });
+  });
+
+  /*
+        db.Pet.findAll({
+          where: { id: req.params.id }
+
+
+        });
+
+        
+        console.log(dbUser);
+        console.log("+++++++++++++++++++++");
+      })
+      .then(function(dbUser, dbHome) {
+        db.Home.findAll({
+          where: { id: req.params.id }
+        });
+        console.log(dbHome);
+        console.log("+++++++++++++++++++++");
+      })
+      .then(function(dbUser, dbPet, dbHome) {
+        res.render("admin/userProfileAdmin", {
+          data: dbUser,
+          pet: dbPet,
+          home: dbHome
+        });
+        console.log(dbPet);
+        console.log("+++++++++++++++++++++");
+      });
   });
   // Pet/Home form for user ID.
   app.get("/formPet/:id", function(req, res) {
