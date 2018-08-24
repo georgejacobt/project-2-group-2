@@ -4,11 +4,11 @@ const bodyParser = require("body-parser");
 const exphbs = require("express-handlebars");
 const morgan = require("morgan");
 // const sequelize = require("sequelize");
-const passport = require("passport");
+// const passport = require("passport");
 // const jwt = require("jsonwebtoken");
 
 //chuck some app related modules here
-const hookJWTStrategy = require("./services/passportStrategy.js");
+// const hookJWTStrategy = require("./services/passportStrategy.js");
 
 const db = require("./models");
 const app = express();
@@ -23,8 +23,8 @@ app.use(express.static("public"));
 app.use(morgan("dev"));
 
 //hooking up passport
-app.use(passport.initialize());
-hookJWTStrategy(passport);
+// app.use(passport.initialize());
+// hookJWTStrategy(passport);
 
 // Handlebars
 app.engine(
@@ -38,7 +38,7 @@ console.log(passport.authenticate);
 // Routes
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
-app.use("/api", require("./routes/apiAuthRoutes.js")(passport));
+// app.use("/api", require("./routes/apiAuthRoutes.js")(passport));
 
 const syncOptions = { force: true };
 
