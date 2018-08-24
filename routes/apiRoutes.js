@@ -9,9 +9,6 @@ module.exports = function(app) {
   });
   app.get("/api/admin", function(req, res) {
     db.User.findAll({ where: { status: "new" } }).then(function(dbUser) {
-      console.log("----- API CALL ------");
-      console.log(dbUser);
-      console.log("----- API CALL ------");
       res.json(dbUser);
     });
   });
@@ -30,7 +27,7 @@ module.exports = function(app) {
       res.json(dbExample);
     });
   });
-
+/*
   // Create a new user
   app.post("/api/user", function(req, res) {
     db.User.create(req.body).then(function(dbUsers) {
@@ -51,6 +48,7 @@ module.exports = function(app) {
       console.log(dbHome);
     });
   });
+*/
   //Get completed payments
   app.get("/api/revenue", function(req, res) {
     db.Appointment.findAll({ where: { complete: 1 } }).then(function(
@@ -60,7 +58,9 @@ module.exports = function(app) {
       let petTotal = 0;
       let payedHomes = [];
       let homeTotal = 0;
+
       for (let i = 0; i < dbAppointment.length; i++) {
+        //dbAppointment[i].date = convertToShortDate(dbAppointment[i].date);
         if (dbAppointment[i].type === false) {
           payedPets.push(dbAppointment[i]);
           petTotal += parseFloat(dbAppointment[i].rate, 11);

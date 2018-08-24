@@ -51,7 +51,7 @@ var handleFormSubmit = function(event) {
     !(
       pet.name &&
       pet.type &&
-      pet.breed &
+      pet.breed &&
       pet.age &&
       pet.allergies&&
       health_issues
@@ -61,14 +61,13 @@ var handleFormSubmit = function(event) {
     console.log("You must enter all  required pet data! (Name, Type, Breed, Age, Allergies and Health Issues");
     return;
   }
-
+  console.log(pet)
   API.savePet(pet).then(function() {
     console.log(pet);
   });
     window.location.replace("/subSuccess");
 };
 
- 
 
 // Add event listeners to the submit button
 

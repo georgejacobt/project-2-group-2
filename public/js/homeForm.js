@@ -48,7 +48,7 @@ var handleHomeSubmit = function(event) {
     alarmCode: $alarmCode.val().trim(),
     keyInstructions: $keyInstructions.val().trim(),
     wifiPassword: $wifiPassword.val().trim(),
-    user_id: $userID
+    user_id: $userID.val.trim()
    };
 
  
@@ -65,7 +65,7 @@ var handleHomeSubmit = function(event) {
     alert("You must enter all  required home data! (Street Address, City, State, Zip and Emergency Contact! ");
     return;
   }
-  API.savePet(home).then(function() {
+  API.saveHome(home).then(function() {
     console.log(home);
   });
   window.location.replace("/admin/");

@@ -5,19 +5,21 @@
                 <h4>Pets</h4>
                 {{#each pets}}
                 <p>
-                <span>When: {{this.date}}   Payment:  {{this.rate}}</span>
+                    <span>When:
+                        <span class="formatThisDate">{{this.date}}</span> Payment: {{this.rate}}</span>
                 </p>
                 {{/each}}
-                <span>Total:  {{petTotal}}</span>
+                <span>Total: {{petTotal}}</span>
             </div>
             <div class="card-panel">
                 <h4>Homes</h4>
                 {{#each homes}}
                 <p>
-                <span>When: {{this.date}}   Payment:  {{this.rate}}</span>
+                    <span>When:
+                        <span class="formatThisDate">{{this.date}}</span> Payment: {{this.rate}}</span>
                 </p>
                 {{/each}}
-                <span>Total:  {{homeTotal}}</span>
+                <span>Total: {{homeTotal}}</span>
             </div>
         </div>
     </div>
