@@ -2,13 +2,9 @@ require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const exphbs = require("express-handlebars");
-const morgan = require("morgan");
+const session = require("express-session");
 // const sequelize = require("sequelize");
-const passport = require("passport");
-// const jwt = require("jsonwebtoken");
-
-//chuck some app related modules here
-const hookJWTStrategy = require("./services/passportStrategy.js");
+var passport = require("./services/passportStrategy");
 
 const db = require("./models");
 const app = express();
@@ -19,12 +15,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
 
-//http request logger
-app.use(morgan("dev"));
-
-//hooking up passport
+//starting passport and using sessions to keep track of user's log in status
+app.use(
+  session({ secret: "ALYSSA'S_SECRET", resave: true, saveUninitialized: true })
+);
 app.use(passport.initialize());
-hookJWTStrategy(passport);
+app.use(passport.session());
 
 // Handlebars
 app.engine(
@@ -38,7 +34,7 @@ console.log(passport.authenticate);
 // Routes
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
-app.use("/api", require("./routes/apiAuthRoutes.js")(passport));
+require("./routes/apiAuthRoutes")(app);
 
 const syncOptions = { force: true };
 

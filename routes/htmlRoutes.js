@@ -1,4 +1,5 @@
 var db = require("../models");
+var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
   // Load index page
@@ -17,6 +18,9 @@ module.exports = function(app) {
   app.get("/homepricing", function(req, res) {
     res.render("homePricing");
   });
+  app.get("/samLogIn", function(req, res) {
+    res.render("samLogIn");
+  });
 
   app.get("/formUser", function(req, res) {
     res.render("formUser", {
@@ -30,7 +34,7 @@ module.exports = function(app) {
   });
 
   // Load dashboard and data
-  app.get("/admin", function(req, res) {
+  app.get("/admin", isAuthenticated, function(req, res) {
     db.User.findAll({ where: { status: "new" } }).then(function(dbUser) {
       res.render("dashboard", {
         data: dbUser
@@ -75,8 +79,7 @@ module.exports = function(app) {
   */
 
   // Render 404 page for any unmatched routes
-  app.get("*", function(req, res) {
-    console.log("req from catch all", res);
-    res.send("YOU HIT CATCH ALL!");
-  });
+  // app.get("*", function(req, res) {
+  //   res.send("YOU HIT CATCH ALL!");
+  // });
 };
