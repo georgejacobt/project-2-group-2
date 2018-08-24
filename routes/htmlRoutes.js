@@ -76,7 +76,8 @@ module.exports = function(app) {
 
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
-    console.log("req from catch all", res);
-    res.send("YOU HIT CATCH ALL!");
+    // console.log("req from catch all", res);
+    // res.send("YOU HIT CATCH ALL!");
+    res.render("404");
   });
 };
