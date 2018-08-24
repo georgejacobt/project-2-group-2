@@ -12,7 +12,8 @@ var $doorCode = $("#");
 var $alarmCode = $("#");
 var $keyInstructions = $("#");
 var $wifiPassword = $("#");
-var $submitHome= $("#submitHome");
+var $submitHome = $("#submitHome");
+var $userID = $("#user_id").val();
  
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -31,11 +32,11 @@ var API = {
 // handleFormSubmit is called whenever we submit a new home
 // Save the new home to the db and refresh the list
 
-var handleFormSubmit = function(event) {
+var handleHomeSubmit = function(event) {
   event.preventDefault();
   var home = {
-    street_address1: $street_address1.val().trim(),
-    street_address2: $street_address2.val().trim(),
+    streetAddress1: $street_address1.val().trim(),
+    streetAddress2: $street_address2.val().trim(),
     city: $city.val().trim(),
     state: $state.val().trim(),
     zip: $zip.val().trim(),
@@ -47,6 +48,7 @@ var handleFormSubmit = function(event) {
     alarmCode: $alarmCode.val().trim(),
     keyInstructions: $keyInstructions.val().trim(),
     wifiPassword: $wifiPassword.val().trim(),
+    user_id: $userID
    };
 
  
@@ -70,6 +72,6 @@ var handleFormSubmit = function(event) {
 };
 
 // Add event listeners to the submit button
-$submitHome.on("click", handleFormSubmit);
+$submitHome.on("click", handleHomeSubmit);
 
  

@@ -8,9 +8,7 @@ module.exports = function(app) {
     });
   });
   app.get("/formUser", function(req, res) {
-    res.render("formUser", {
-      msg: "Welcome!"
-    });
+    res.render("formUser");
   });
   app.get("/subSuccess", function(req, res) {
     res.render("subSuccess", {
@@ -20,9 +18,74 @@ module.exports = function(app) {
 
   // Load dashboard and data
   app.get("/admin", function(req, res) {
-    db.User.findAll({ where: { status: "new" } }).then(function(dbUser) {
+    db.User.findAll({
+      include: [
+        {
+          model: db.Pet
+        },
+        {
+          model: db.Home
+        }
+      ]
+    }).then(function(dbUser) {
+      let USERS = [];
+      let NEWUSERS = [];
+      let HOMES = [];
+      let PETS = [];
+      for (let i = 0; i < dbUser.length; i++) {
+        //New Users
+        if (dbUser[i].status === "new") {
+          let NEWUSER = {
+            firstName: dbUser[i].firstName,
+            lastName: dbUser[i].lastName,
+            cellPhone: dbUser[i].cellPhone,
+            emailAddress: dbUser[i].emailAddress,
+            id: dbUser[i].id
+          };
+          NEWUSERS.push(NEWUSER);
+        }
+        //All Users
+        let USER = {
+          firstName: dbUser[i].firstName,
+          lastName: dbUser[i].lastName,
+          cellPhone: dbUser[i].cellPhone,
+          emailAddress: dbUser[i].emailAddress,
+          id: dbUser[i].id
+        };
+        USERS.push(USER);
+        //Homes ordered by User
+        if (dbUser[i].Homes.legth !== 0) {
+          for (let y = 0; y < dbUser[i].Homes.length; y++) {
+            let HOME = {
+              street1: dbUser[i].Homes[y].streetAddress1,
+              street: dbUser[i].Homes[y].streetAddress2,
+              city: dbUser[i].Homes[y].city,
+              state: dbUser[i].Homes[y].state,
+              zip: dbUser[i].Homes[y].zip
+            };
+            HOMES.push(HOME);
+          }
+        }
+        //Pets ordered by User
+        if (dbUser[i].Pets.legth !== 0) {
+          for (let y = 0; y < dbUser[i].Pets.length; y++) {
+            let PET = {
+              name: dbUser[i].Pets[y].name,
+              type: dbUser[i].Pets[y].type,
+              breed: dbUser[i].Pets[y].breed,
+              age: dbUser[i].Pets[y].age,
+              visitNumber: dbUser[i].Pets[y].visitNumber
+            };
+            PETS.push(PET);
+          }
+        }
+      }
+      console.log(PETS, HOMES);
       res.render("admin/dashboard", {
-        data: dbUser
+        USERS: USERS,
+        NEWUSERS: NEWUSERS,
+        HOMES: HOMES,
+        PETS: PETS
       });
     });
   });
@@ -39,48 +102,74 @@ module.exports = function(app) {
       ],
       where: { id: req.params.id }
     }).then(function(dbUser) {
-      console.log(dbUser.Homes[0].city);
       res.render("admin/userProfileAdmin", {
         data: dbUser
       });
     });
   });
-
-  /*
-        db.Pet.findAll({
-          where: { id: req.params.id }
-
-
-        });
-
-        
-        console.log(dbUser);
-        console.log("+++++++++++++++++++++");
-      })
-      .then(function(dbUser, dbHome) {
-        db.Home.findAll({
-          where: { id: req.params.id }
-        });
-        console.log(dbHome);
-        console.log("+++++++++++++++++++++");
-      })
-      .then(function(dbUser, dbPet, dbHome) {
-        res.render("admin/userProfileAdmin", {
-          data: dbUser,
-          pet: dbPet,
-          home: dbHome
-        });
-        console.log(dbPet);
-        console.log("+++++++++++++++++++++");
+  //Appointments
+  app.get("/appointments", function(req, res) {
+    db.Appointment.findAll({}).then(function(Appts) {
+      console.log(Appts);
+      res.render("admin/appointments", {
+        data: Appts
       });
+    });
+  });
+  app.get("/allPets", function(req, res) {
+    db.Pet.findAll({}).then(function(Pets) {
+      console.log(Pets);
+      res.render("admin/allPets", {
+        data: Pets
+      });
+    });
+  });
+  app.get("/allHomes", function(req, res) {
+    db.Home.findAll({}).then(function(Homes) {
+      console.log(Homes);
+      res.render("admin/allHomes", {
+        data: Homes
+      });
+    });
+  });
+  app.post("/approve/:id", function(req) {
+    db.User.update({
+      status: "approve",
+      where: {
+        id: req.body.id
+      }
+    }).then(function() {
+      res.render("/admin");
+    });
+  });
+  app.post("/decline/:id", function(req) {
+    db.User.update({
+      status: "decline",
+      where: {
+        id: req.body.id
+      }
+    }).then(function() {
+      res.render("/admin");
+    });
   });
   // Pet/Home form for user ID.
-  app.get("/formPet/:id", function(req, res) {
+  app.get("/formPet/", function(req, res) {
     res.render("admin/formPet", {
       data: req.params.id
     });
   });
-  app.get("/formHome/:id", function(req, res) {
+  app.get("/formHome/", function(req, res) {
+    res.render("admin/formHome", {
+      data: req.params.id
+    });
+  });
+  // Pet/Home form for user ID Update.
+  app.get("/formPetUpdate/:id", function(req, res) {
+    res.render("admin/formPet", {
+      data: req.params.id
+    });
+  });
+  app.get("/formHomeUpdate/:id", function(req, res) {
     res.render("admin/formHome", {
       data: req.params.id
     });

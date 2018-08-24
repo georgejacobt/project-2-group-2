@@ -54,11 +54,14 @@
                         <div class="row">
                             <div class="card mt-6">                             
                                 <div class="card-image">
-                                    <img class="profile" src="/images/userProfile.png">
+                                    <img class="profile" src="/images/petProfile.jpg">
                                         <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
                                 </div>
                                 <div class="card-content">
                                     <span class="card-title grey-text"><h5>{{data.firstName}} {{data.lastName}}</h5></span>
+                                    <span class="card-title grey-text">Phone: {{data.cellPhone}}</span>
+                                    <span class="card-title grey-text">Email: {{data.cellPhone}}</span>
+                                    <span class="card-title grey-text">Client Status: {{data.status}}</span>
                                 </div>
                             </div>
                         </div>
@@ -72,7 +75,7 @@
                         <p>
                             Set up an appointment with Sam!    
                         </p>
-                        <input placeholder="Select a Date" type="text" class="datepicker grey-text">
+                        <input placeholder="Select a Date" type="text" class="datepicker grey-text" id="datepicker_">
                         <input placeholder="Select a Time" type="text" class="timepicker gret-text">
                         <button id="submitAppt" class="btn btn-primary float-right">Request!</button>
                 </div>
@@ -88,15 +91,14 @@
                 <div class="card-panel red lighten-1 white-text">
                     <i class="material-icons small">home</i> 
                         <h5>User Homes</h5>
-                        <a class="btn" href="/formHome/:{{data.id}}">Add A Home</a>
+                        <a class="btn" href="/formHome/">Add A Home</a>
                 </div>
             </div>
             <div class="col 13 m6 s12">
                 <div class="card-panel red lighten-1 white-text">
                     <i class="material-icons small">pets</i> 
                         <h5>User Pets</h5>
-                        <h3 class="count">#</h3>
-                        <a class="btn" href="/formPet/:{{data.id}}">Add A Pet</a>
+                        <a class="btn" href="/formPet/">Add A Pet</a>
                 </div>
             </div>
         </div>          

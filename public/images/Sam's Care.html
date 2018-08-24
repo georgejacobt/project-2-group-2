@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<!-- saved from url=(0029)http://localhost:3000/formPet -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="./Sam&#39;s Care_files/icon" rel="stylesheet">
+  <link rel="stylesheet" href="./Sam&#39;s Care_files/materialize.css">
+  <link rel="stylesheet" href="./Sam&#39;s Care_files/styles.css" media="screen" title="no title" charset="utf-8">
+  <link rel="shortcut icon" type="image/png" href="http://localhost:3000/images/favicon.png">
+  <title>Sam's Care</title>
+</head>
+
+<body>
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="http://localhost:3000/" class="brand-logo">Logo</a>
+      <ul class="right hide-on-med-and-down">
+        <li>
+          <a href="http://localhost:3000/formPet#">Register/Login</a>
+        </li>
+      </ul>
+
+      <ul id="nav-mobile" class="sidenav">
+        <li>
+          <a href="http://localhost:3000/formPet#">Register/Login</a>
+        </li>
+      </ul>
+      <a href="http://localhost:3000/formPet#" data-target="nav-mobile" class="sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+
+  <section class="section section-stats center">
+    <div class="row">
+        <div class="col 13 m11 s12">
+            <div class="card-panel">
+                <form class="Pet" action="http://localhost:3000/api/Pets" method="POST">
+                    <div class="form-group">
+                        <label for="name" class="active"> Pet Name </label>
+                        <input type="text" class="form-control" id="name" placeholder="Rex" name="">
+                    </div>
+                    <div class="form-group">
+                        <label for="type" class="active"> Type </label>
+                        <input type="text" class="form-control" id="type" placeholder="Poop Monster" name="">
+                    </div>
+                    <div class="form-group">
+                        <label for="breed" class="active"> Breed </label>
+                        <input type="text" class="form-control" id="breed" placeholder="Poop Monster" name="">
+                    </div>
+                    <div class="form-group">
+                        <label for="age" class="active">  Age </label>
+                        <input type="number" class="form-control" id="age" placeholder="" name="">
+                    </div>
+                    <div class="form-group">
+                        <label for="allergies" class="active"> Alergies </label>
+                        <input type="text" class="form-control" id="allergies" placeholder="" name="">
+                    </div>
+                    <div class="form-group">
+                        <label for="medication" class="active"> Medecation(s) </label>
+                        <input type="text" class="form-control" id="medication" placeholder="" name="">
+                    </div>
+                    <div class="form-group">
+                        <label for="health_issues" class="active"> Health Issue(s) </label>
+                        <input type="text" class="form-control" id="health_issues" placeholder="" name="">
+                    </div>
+                    <div class="form-group">
+                        <label for="feeding_instructions" class="active"> Feeding Instructions </label>
+                        <input type="text" class="form-control" id="feeding_instructions" placeholder="" name="">
+                    </div>
+                    <div class="form-group">
+                        <label for="vet_first_name" class="active"> Veterinarian First Name  </label>
+                        <input type="text" class="form-control" id="vetFirstName" placeholder="" name="">
+                    </div>
+                    <div class="form-group">
+                        <label for="vet_last_name" class="active"> Veterinarian Last Name  </label>
+                        <input type="text" class="form-control" id="vetLastName" placeholder="" name="">
+                    </div>
+                        <div class="form-group">
+                        <label for="vet_clinic_name" class="active"> Veterinary Clinic  </label>
+                        <input type="text" class="form-control" id="vetClinicName" placeholder="" name="">
+                    </div>
+                    <div class="form-group">
+                        <label for="clinic_phone" class="active"> Clinic Phone  </label>
+                        <input type="tel" class="form-control" id="clinic_p
+                        hone" placeholder="" name="">
+                    </div>
+                    <!-- Visit # AUTO INC -->
+                    <button id="submitPet" class="btn btn-primary float-right">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="./Sam&#39;s Care_files/petForm.js.download"></script>
+</section>
+
+
+  <footer class="page-footer orange">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Company Bio</h5>
+          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support
+            and continue development on this project and is greatly appreciated.</p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Settings</h5>
+          <ul>
+            <li>
+              <a class="white-text" href="http://localhost:3000/datacenter">Datacenter</a>
+            </li>
+            <li>
+              <a class="white-text" href="http://localhost:3000/formPet#!">Link 2</a>
+            </li>
+            <li>
+              <a class="white-text" href="http://localhost:3000/formPet#!">Link 3</a>
+            </li>
+            <li>
+              <a class="white-text" href="http://localhost:3000/formPet#!">Link 4</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li>
+              <a class="white-text" href="http://localhost:3000/formPet#!">Link 1</a>
+            </li>
+            <li>
+              <a class="white-text" href="http://localhost:3000/formPet#!">Link 2</a>
+            </li>
+            <li>
+              <a class="white-text" href="http://localhost:3000/formPet#!">Link 3</a>
+            </li>
+            <li>
+              <a class="white-text" href="http://localhost:3000/formPet#!">Link 4</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        Made by
+        <a class="orange-text text-lighten-3" href="https://github.com/bonnie-bee/project-2-group-2">Project-2-Group-2</a>
+      </div>
+    </div>
+  </footer>
+
+
+<script type="text/javascript" src="./Sam&#39;s Care_files/jquery.min.js.download"></script>
+<script src="./Sam&#39;s Care_files/materialize.js.download"></script>
+<!-- Index was from starter code?
+<script src="/js/index.js"></script>
+-->
+<script src="./Sam&#39;s Care_files/init.js.download"></script>
+<script src="./Sam&#39;s Care_files/papaparse.min.js.download"></script>
+<script src="./Sam&#39;s Care_files/parse.js.download"></script>
+<script src="./Sam&#39;s Care_files/userForm.js.download"></script>
+<script src="./Sam&#39;s Care_files/userProfileAdmin.js.download"></script>
+<script src="./Sam&#39;s Care_files/admin.js.download"></script>
+<script src="./Sam&#39;s Care_files/jquery.modal.min.js.download"></script>
+<script type="text/javascript">
+
+ 
+
+  $('.modalBtn').on('click', function () {
+    $('.modal').modal();
+      $(this).modal('open');
+    })
+
+
+
+   // $('.modal').modal();
+</script>
+
+
+<div class="sidenav-overlay"></div><div class="drag-target"></div></body></html>
