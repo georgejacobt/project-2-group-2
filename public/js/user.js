@@ -60,6 +60,7 @@ var handleFormSubmit = function(event) {
   $("#userName").empty();
 
   window.location.replace("subSuccess");
+  console.log("below subsucess");
 };
 
 // Add event listeners to the submit button

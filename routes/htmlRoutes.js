@@ -79,7 +79,15 @@ module.exports = function(app) {
   */
 
   // Render 404 page for any unmatched routes
+<<<<<<< HEAD
   // app.get("*", function(req, res) {
   //   res.send("YOU HIT CATCH ALL!");
   // });
+=======
+  app.get("*", function(req, res) {
+    // console.log("req from catch all", res);
+    // res.send("YOU HIT CATCH ALL!");
+    res.render("404");
+  });
+>>>>>>> 307e5ee50781eaae997e65ef8892a6b17e01ec7d
 };
