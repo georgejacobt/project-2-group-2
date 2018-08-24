@@ -34,7 +34,7 @@ app.engine(
   })
 );
 app.set("view engine", "handlebars");
-console.log(passport.authenticate);
+// console.log(passport.authenticate);
 // Routes
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
