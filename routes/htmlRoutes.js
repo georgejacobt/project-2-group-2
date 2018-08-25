@@ -1,4 +1,5 @@
 var db = require("../models");
+var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
   // Load index page
@@ -7,6 +8,29 @@ module.exports = function(app) {
       msg: "Welcome!"
     });
   });
+
+  app.get("/signup", function(req, res) {
+    res.render("adminPage");
+  });
+
+  app.get("/petpricing", function(req, res) {
+    res.render("petPricing");
+  });
+  app.get("/aboutme", function(req, res) {
+    res.render("aboutMe");
+  });
+  app.get("/homepricing", function(req, res) {
+    res.render("homePricing");
+  });
+  app.get("/samLogIn", function(req, res) {
+    res.render("samLogIn");
+  });
+
+  app.get("/logout", function(req, res) {
+    req.logout();
+    res.redirect("/");
+  });
+
   app.get("/formUser", function(req, res) {
     res.render("formUser");
   });
@@ -17,7 +41,7 @@ module.exports = function(app) {
   });
 
   // Load dashboard and data
-  app.get("/admin", function(req, res) {
+  app.get("/admin", isAuthenticated, function(req, res) {
     db.User.findAll({
       include: [
         {
@@ -166,7 +190,7 @@ module.exports = function(app) {
 
   // Load datacenter page
 
-  app.get("/datacenter", function(req, res) {
+  app.get("/api/datacenter", function(req, res) {
     res.render("datacenter", {
       msg: "Welcome!"
     });
@@ -213,6 +237,8 @@ module.exports = function(app) {
 
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
+    // console.log("req from catch all", res);
+    // res.send("YOU HIT CATCH ALL!");
     res.render("404");
   });
 };

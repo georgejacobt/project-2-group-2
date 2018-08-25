@@ -10,6 +10,11 @@
     height: 300px;
     padding: 1rem
 }
+
+#teambio {
+  justify-content: center;
+  
+}
 .funky {
   overflow-y: scroll;
   height: auto;

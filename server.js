@@ -1,16 +1,26 @@
 require("dotenv").config();
-var express = require("express");
-var bodyParser = require("body-parser");
-var exphbs = require("express-handlebars");
+const express = require("express");
+const bodyParser = require("body-parser");
+const exphbs = require("express-handlebars");
+const session = require("express-session");
+// const sequelize = require("sequelize");
+var passport = require("./services/passportStrategy");
 
-var db = require("./models");
-var app = express();
-var PORT = process.env.PORT || 3000;
+const db = require("./models");
+const app = express();
+const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
+
+//starting passport and using sessions to keep track of user's log in status
+app.use(
+  session({ secret: "ALYSSA'S_SECRET", resave: true, saveUninitialized: true })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Handlebars
 app.engine(
@@ -20,12 +30,13 @@ app.engine(
   })
 );
 app.set("view engine", "handlebars");
-
+// console.log(passport.authenticate);
 // Routes
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
+require("./routes/apiAuthRoutes")(app);
 
-var syncOptions = { force: true };
+const syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
