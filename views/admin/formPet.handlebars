@@ -1,52 +1,65 @@
-<form class="Pet" action="/registration" method="POST">
-    <div class="form-group">
-        <label for="name" > Pet Name </label>
-        <input type="text" class="form-control" id="name" placeholder="Rex" name="">
+<section class="section section-stats center">
+    <div class="row">
+        <div class="col 13 m11 s12">
+            <div class="card-panel">
+                <form class="Pet" action="api/pet" method="POST">
+                    <div class="form-group">
+                        <label for="name" > Pet Name </label>
+                        <input type="text" class="form-control" id="name" placeholder="Rex" name="">
+                    </div>
+                    <div class="form-group">
+                        <label for="type" > Type </label>
+                        <input type="text" class="form-control" id="type" placeholder="Poop Monster" name="">
+                    </div>
+                    <div class="form-group">
+                        <label for="breed" > Breed </label>
+                        <input type="text" class="form-control" id="breed" placeholder="Poop Monster" name="">
+                    </div>
+                    <div class="form-group">
+                        <label for="age" >  Age </label>
+                        <input type="number" class="form-control" id="age" placeholder="" name="">
+                    </div>
+                    <div class="form-group">
+                        <label for="allergies" > Alergies </label>
+                        <input type="text" class="form-control" id="allergies" placeholder="" name="">
+                    </div>
+                    <div class="form-group">
+                        <label for="medication" > Medecation(s) </label>
+                        <input type="text" class="form-control" id="medication" placeholder="" name="">
+                    </div>
+                    <div class="form-group">
+                        <label for="health_issues" > Health Issue(s) </label>
+                        <input type="text" class="form-control" id="health_issues" placeholder="" name="">
+                    </div>
+                    <div class="form-group">
+                        <label for="feeding_instructions" > Feeding Instructions </label>
+                        <input type="text" class="form-control" id="feeding_instructions" placeholder="" name="">
+                    </div>
+                    <div class="form-group">
+                        <label for="vet_first_name" > Veterinarian First Name  </label>
+                        <input type="text" class="form-control" id="vetFirstName" placeholder="" name="">
+                    </div>
+                    <div class="form-group">
+                        <label for="vet_last_name" > Veterinarian Last Name  </label>
+                        <input type="text" class="form-control" id="vetLastName" placeholder="" name="">
+                    </div>
+                        <div class="form-group">
+                        <label for="vet_clinic_name" > Veterinary Clinic  </label>
+                        <input type="text" class="form-control" id="vetClinicName" placeholder="" name="">
+                    </div>
+                    <div class="form-group">
+                        <label for="clinic_phone" > Clinic Phone  </label>
+                        <input type="tel" class="form-control" id="clinic_p
+                        hone" placeholder="" name="">
+                    </div>
+                    <div>
+                        <input id="user_id" name="user_id" type="hidden" value="{{this.id}}">
+                    </div>
+                    <!-- Visit # AUTO INC -->
+                    <button id="submitPet" class="btn btn-primary float-right">Submit</button>
+                </form>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="type" > Type </label>
-        <input type="text" class="form-control" id="type" placeholder="Poop Monster" name="">
-    </div>
-    <div class="form-group">
-        <label for="breed" > Breed </label>
-        <input type="text" class="form-control" id="breed" placeholder="Poop Monster" name="">
-    </div>
-    <div class="form-group">
-        <label for="age" >  Age </label>
-        <input type="number" class="form-control" id="age" placeholder="" name="">
-    </div>
-    <div class="form-group">
-        <label for="allergies" > Alergies </label>
-        <input type="text" class="form-control" id="allergies" placeholder="" name="">
-    </div>
-    <div class="form-group">
-        <label for="medication" > Medecation(s) </label>
-        <input type="text" class="form-control" id="medication" placeholder="" name="">
-    </div>
-    <div class="form-group">
-        <label for="health_issues" > Health Issue(s) </label>
-        <input type="text" class="form-control" id="health_issues" placeholder="" name="">
-    </div>
-    <div class="form-group">
-        <label for="feeding_instructions" > Feeding Instructions </label>
-        <input type="text" class="form-control" id="feeding_instructions" placeholder="" name="">
-    </div>
-    <div class="form-group">
-        <label for="vet_clinic_name" > Veterinary Clinic  </label>
-        <input type="text" class="form-control" id="vetClinicName" placeholder="" name="">
-    </div>
-    <div class="form-group">
-        <label for="vet_first_name" > Veterinarian First Name  </label>
-        <input type="text" class="form-control" id="vetFirstName" placeholder="" name="">
-    </div>
-    <div class="form-group">
-        <label for="vet_last_name" > Veterinarian Last Name  </label>
-        <input type="text" class="form-control" id="vetLastName" placeholder="" name="">
-    </div>
-    <div class="form-group">
-        <label for="clinic_phone" > Clinic Phone  </label>
-        <input type="tel" class="form-control" id="clinichone" placeholder="" name="">
-    </div>
-    <!-- Visit # AUTO INC -->
-    <button id="submit" class="btn btn-primary float-right">Submit</button>
-</form>
+    <script type="text/javascript" src="js/petForm.js"></script>
+</section>

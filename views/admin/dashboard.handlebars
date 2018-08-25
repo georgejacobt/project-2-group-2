@@ -1,0 +1,240 @@
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+    
+    // Load the Visualization API and the piechart package.
+    google.charts.load('current', {'packages':['table']});
+      
+    // Set a callback to run when the Google Visualization API is loaded.
+    google.charts.setOnLoadCallback(drawChart);
+      
+    function drawChart() {
+        var jsonData = $.ajax({
+            url: "/api/admin",
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                //console.log(data[0].id);
+                let rows = [];
+                for(let i = 0; i < data.length; i++){
+                    let newRow = [];
+                    newRow.push(data[i].id);
+                    newRow.push(data[i].firstName);
+                    newRow.push(data[i].lastName);
+                    newRow.push(data[i].cellPhone);
+                    newRow.push(data[i].emailAddress);
+                    rows.push(newRow);
+                }
+                              
+                // Create the data table.
+                    var data = new google.visualization.DataTable();
+                    data.addColumn('number', 'ID');                
+                    data.addColumn('string', 'First Name');
+                    data.addColumn('string', 'Last Name');
+                    data.addColumn('string', 'Cell Phone');
+                    data.addColumn('string', 'Email');
+                    data.addRows(rows);
+                    
+                // Create our data table out of JSON data loaded from server.
+                // var data = new google.visualization.DataTable(jsonData);
+                    var table = new google.visualization.Table(document.getElementById('chart_div'));
+
+                    table.draw(data, {showRowNumber: false, width: '100%', height: '100%'});
+                    
+                // Instantiate and draw our chart, passing in some options.
+                // var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+                // chart.draw(data, {width: 400, height: 240});
+            },          
+            error: function (jqXHR, textStatus, errorThrown) {
+                debugger;
+                alert(textStatus, errorThrown, jqXHR);
+            }
+        });
+    };
+    </script>
+
+<!-- SIDE NAV to come. Requires pointing to new main.handlebar or creating a new solution for the mobile menu/responsiveness.
+<nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container">
+        <ul id="nav-mobile" class="sidenav2">
+            <li>
+                <a href="#">Dashboard</a>
+            </li>
+            <li>
+                <a href="#">Users</a>
+            </li>
+
+            <li>
+                <a href="#">Apointments</a>
+            </li>
+            <li>
+                <a href="#">Pets</a>
+            </li>
+            <li>
+                <a href="#">Homes</a>
+            </li>
+        </ul>
+    
+        <ul id="nav-mobile" class="sidenav2">
+            <li>
+                <a href="#">Dashboard</a>
+            </li>
+            <li>
+                <a href="#">Users</a>
+            </li>
+            <li>
+                <a href="#">Apointments</a>
+            </li>
+            <li>
+                <a href="#">Pets</a>
+            </li>
+            <li>
+                <a href="#">Homes</a>
+            </li>           
+        </ul>
+        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+        
+    </div>
+    
+</nav>
+-->
+<!-- DASHBOARD BEGINS -->
+    <section class="sction section-stats center">
+        <div class="row">
+            <div class="col 13 m6 s12">
+                <div class="card-panel red lighten-2 white-text">
+                    <i class="material-icons small">pets</i> 
+                        <h5>Pets</h5>
+                        <ul>
+                        {{#each PETS}}
+                            <li class="collection-item white itemavatar grey-text">
+                                <span class="title">{{this.name}}</span>
+                                <span class="title">{{this.type}}</span>
+                                <span class="title">{{this.breed}}</span>
+                                <span class="title">{{this.age}}</span>
+                                <a href="/formPets/{{this.id}}" class="view blue-text">View | Edit</a>
+                            </li>
+                        {{/each}}
+                        </ul>
+                    <a class="btn" href="/allPets">Pets Center</a>
+                </div>
+            </div>
+            <div class="col 14 m6 s12 ">
+                <ul class="collection with-header pending-posts">
+                    <li class="collection-header">
+                        <h5>New Users awaiting Meet&amp;Greet </h5>
+                    </li>
+
+                    {{#each NEWUSERS}}
+                    <li class="collection-item item-avatar">
+                        <img src="/images/business.jpg" alt="avatar" class="circle">
+                        <span class="title">{{this.firstName}}</span> 
+                        <span class="title">{{this.lastName}}</span> ||
+                        <span class="title">{{this.cellPhone}}</span> ||
+                        <span class="title">{{this.emailAddress}}</span> ||
+                        <a href="/userProfileAdmin/{{this.id}}" class="view blue-text">View</a> 
+                        <!-- Nice Feature, not activiated yet
+                        <a class="btn-floating btn-small waves-effect waves-light green"  id="approve" val={{this.id}}>
+                            <i class="material-icons">check</i>
+                        </a> |
+                        <a class="btn-floating btn-small waves-effect waves-light red"  id="decline" val={{this.id}}>
+                            <i class="material-icons">clear</i>
+                        </a>
+                        -->
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+            <div class="col 13 m6 s12">
+                <div class="card-panel red lighten-2 white-text">
+                    <i class="material-icons small">date_range</i> 
+                        <h5>Appointments</h5>
+                        <p>
+                            An expanded, more versatile appointments widget is planned for this area in the future. In the 
+                            meanntime, the link below will place you on a stand alone web page. <empasize>Stay tuned!</empasize>
+                        </p>
+                        <a class="btn" href="/appointments">Appointments Center</a>
+                </div>
+            </div>
+            <div class="col 13 m6 s12">
+                <div class="card-panel red lighten-2 white-text">
+                    <h5 class="collection-item white itemavatar grey-text">Homes</h5>
+                    <div class="card-panel white lighten-1 grey-text scroll-box">
+                    <i class="material-icons small">home</i> 
+                        <table>
+                            <tr>
+                                <th>Street Address</th>
+                                <th>City</th>
+                                <th>State</th>
+                                <th>Zip</th>
+                                <th>Link</th>
+                            </tr>
+                            {{#each HOMES}}
+                            <tr>
+                                <td class="title">{{this.street1}} {{this.street2}}</td>
+                                <td class="title">{{this.city}}</td>
+                                <td class="title">{{this.state}}</td>
+                                <td class="title">{{this.zip}}</td>
+                                <td>
+                                    <a href="/formHomes/{{this.id}}" class="view blue-text">View | Edit</a>
+                                </td>
+                                <td>
+                                    <a class="btn" target="_blank" href="https://www.google.com/maps/search/{{this.street1}}+{{this.street2}}+{{this.city}}+{{this.state}}+{{this.zip}}">Google Map</a>
+                                </td>
+                            </td>
+                        {{/each}}
+                        </table>
+                    </div>
+                    <a class="btn" href="/allHomes">Homes Center</a>
+                </div>
+            </div>
+                        <div class="col 13 m12 s12">
+                <div class="card-panel red lighten-2 white-text">
+                    <i class="material-icons small">account_box</i> 
+                        <h5>All Users</h5>
+                            <div class="container">
+                            <div class="row">
+                                <div class="col-6">
+                                <div class="card mt-6">
+                                    <div class="card-body scroll-box">
+                                        <table class="grey-text">
+                                            <tr>
+                                                <th>First</th>
+                                                <th>Last</th>
+                                                <th>Email</th>
+                                                <th>Phone</th>
+                                                <th>View</th>
+                                            </tr>      
+                                            {{#each USERS}}
+                                            <tr>
+                                                <td>{{this.firstName}}</td>
+                                                <td>{{this.lastName}}</td>                   
+                                                <td>{{this.emailAddress}}</td>                   
+                                                <td>{{this.cellPhone}}</td>                   
+
+                                                <td>
+                                                    <a href="/userProfileAdmin/{{this.id}}" id="{{this.id}}" class="btn-floating btn-large red"><i class="small material-icons">account_circle</i></a>
+                                                </td>
+                                            </tr>
+                                            {{/each}}
+                                        </table>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                </div>
+            </div>
+            <div class="col 13 m12 s12">
+                <div class="card-panel red lighten-2 white-text ">
+                    <i class="material-icons small">account_balance_wallet</i> 
+                        <h5>Business Center</h5>
+                        <div id="chart_div" class="grey-text"></div>
+                </div>
+            </div>
+        </div>          
+    </section>
+</div>
+
+

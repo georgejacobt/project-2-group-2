@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col 13 m11 s12">
             <div class="card-panel">
-            <form class="user" action="/registration" method="POST">
+            <form class="user" action="/api/user" method="POST">
                 <div class="form-group">
                     <label for="firstName" > First Name </label>
                     <input type="text" class="form-control" id="firstName" placeholder="" name="">
@@ -28,12 +28,17 @@
                     <label for="pw" > Password  </label>
                     <input type="password" class="form-control" id="userName" placeholder="" name="">
                 </div>
+                <div class="form-group">
+                    <label for="pw" > Re-Type Password  </label>
+                    <input type="password" class="form-control" id="userNameCheck" placeholder="" name="">
+                </div>
                 -->
                 <button id="submitUser" class="btn btn-primary float-right">Submit</button>
             </form>
             </div>
         </div>
     </div>
+<script type="text/javascript" src="/js/userForm.js"></script>
 </section>
             
         
