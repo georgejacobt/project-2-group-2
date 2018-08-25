@@ -1,0 +1,77 @@
+
+<!-- SIDE NAV to come. Requires pointing to new main.handlebar or creating a new solution for the mobile menu/responsiveness.
+<nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container">
+        <ul id="nav-mobile" class="sidenav2">
+            <li>
+                <a href="#">Dashboard</a>
+            </li>
+            <li>
+                <a href="#">Users</a>
+            </li>
+
+            <li>
+                <a href="#">Apointments</a>
+            </li>
+            <li>
+                <a href="#">Pets</a>
+            </li>
+            <li>
+                <a href="#">Homes</a>
+            </li>
+        </ul>
+    
+        <ul id="nav-mobile" class="sidenav2">
+            <li>
+                <a href="#">Dashboard</a>
+            </li>
+            <li>
+                <a href="#">Users</a>
+            </li>
+            <li>
+                <a href="#">Apointments</a>
+            </li>
+            <li>
+                <a href="#">Pets</a>
+            </li>
+            <li>
+                <a href="#">Homes</a>
+            </li>           
+        </ul>
+        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+        
+    </div>
+    
+</nav>
+-->
+<!-- DASHBOARD BEGINS -->
+    <section class="sction section-stats center">
+        <div class="row">
+            <div class="col 13 m12 s12">
+                <div class="card-panel red lighten-1 funky grey-text">
+                    <ul class="collection with-header pending-posts">
+                        <li class="collection-header">
+                            <h5>Appointment Center</h5>
+                        </li>
+
+                        {{#each data}}
+                        <li class="collection-item item-avatar">
+                            <img src="/images/business.jpg" alt="avatar" class="circle">
+                            <span class="title">{{this.type}}</span> 
+                            <span class="title">{{this.location}}</span> |
+                            <span class="title">{{this.time}}</span> |
+                            <span class="title">{{this.date}}</span> |
+                            <span class="title">${{this.rate}}.00</span> |
+                            <a href="/userProfileAdmin/{{this.user_id}}" class="view blue-text">View User</a> |
+                            <a href="/userProfileAdmin/{{this.pet_id}}" class="view blue-text">View Pet(s)</a> |
+                            <a href="/userProfileAdmin/{{this.home_id}}" class="view blue-text">View Home(s)</a>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+

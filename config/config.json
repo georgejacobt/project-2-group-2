@@ -6,6 +6,7 @@
     "password": "@129655lkn*",
     "database": "sams_care",
     "port": 3307,
+
     "dialect": "mysql"
   },
   "test": {
