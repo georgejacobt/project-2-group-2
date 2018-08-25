@@ -1,4 +1,5 @@
 var db = require("../models");
+var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
   // Load index page
@@ -6,6 +7,10 @@ module.exports = function(app) {
     res.render("index", {
       msg: "Welcome!"
     });
+  });
+
+  app.get("/signup", function(req, res) {
+    res.render("adminPage");
   });
 
   app.get("/petpricing", function(req, res) {
@@ -16,6 +21,9 @@ module.exports = function(app) {
   });
   app.get("/homepricing", function(req, res) {
     res.render("homePricing");
+  });
+  app.get("/samLogIn", function(req, res) {
+    res.render("samLogIn");
   });
 
   app.get("/formUser", function(req, res) {
@@ -28,7 +36,7 @@ module.exports = function(app) {
   });
 
   // Load dashboard and data
-  app.get("/admin", function(req, res) {
+  app.get("/admin", isAuthenticated, function(req, res) {
     db.User.findAll({
       include: [
         {

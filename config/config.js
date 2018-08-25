@@ -18,20 +18,20 @@ module.exports = {
   }
 };
 
-const config = module.exports;
+// const config = module.exports;
 
-config.db = {
-  user: process.env.DB_USERNAME,
-  password: process.env.DB_PASSWORD,
-  name: process.env.DB_NAME
-};
+// config.db = {
+//   user: process.env.DB_USERNAME,
+//   password: process.env.DB_PASSWORD,
+//   name: process.env.DB_NAME
+// };
 
-config.db.details = {
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  dialect: "mysql"
-};
+// config.db.details = {
+//   host: process.env.DB_HOST,
+//   port: process.env.DB_PORT,
+//   dialect: "mysql"
+// };
 
-config.keys = {
-  secret: process.env.SECRET
-};
+// config.keys = {
+//   secret: "I'MASTRINGHAHAHAHAHA"
+// };

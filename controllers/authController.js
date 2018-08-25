@@ -28,7 +28,6 @@ AuthController.signUp = function(req, res) {
         //res.redirect("redirectHere") - by default always redirects to a get
 
         //successful user creation
-        console.log(models);
         return models.Admin.create(newUser).then(function() {
           res.status(201).json({ message: "Account created!" });
         });
@@ -54,8 +53,6 @@ AuthController.authenticateUser = function(req, res) {
         if (!bucket) {
           res.status(404).json({ message: "Incorrect Username" });
         } else {
-          console.log(typeof bucket.comparePasswords);
-
           bucket.comparePasswords(password, function(error, isMatch) {
             if (isMatch && !error) {
               var token = jwt.sign(
@@ -65,6 +62,7 @@ AuthController.authenticateUser = function(req, res) {
               );
 
               res.json({ success: true, token: "JWT " + token });
+              console.log(token);
             } else {
               res.status(404).json({ message: "Incorrect Password" });
             }

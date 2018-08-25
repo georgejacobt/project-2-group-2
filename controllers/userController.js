@@ -3,10 +3,12 @@
 // The user controller.
 var UserController = {
   index: function(req, res) {
-    console.log("am i even here");
     res.status(200).json({
-      message: "Welcome to the users area " + req.user.username + "!"
+      message: "Welcome to the users area " + req.user.username + "!",
+      status: 200,
+      location: "/admin"
     });
+    // res.json("/admin");
   }
 };
 
