@@ -15,3 +15,12 @@
   justify-content: center;
   
 }
+.funky {
+  overflow-y: scroll;
+  height: auto;
+  padding: 1rem
+}
+.profile {
+  width: 100px;
+  height: auto;
+}
