@@ -152,17 +152,6 @@ module.exports = function(app) {
       res.render("/admin");
     });
   });
-  // Pet/Home form for user ID.
-  app.get("/formPet/", function(req, res) {
-    res.render("admin/formPet", {
-      data: req.params.id
-    });
-  });
-  app.get("/formHome/", function(req, res) {
-    res.render("admin/formHome", {
-      data: req.params.id
-    });
-  });
   // Pet/Home form for user ID Update.
   app.get("/formPetUpdate/:id", function(req, res) {
     res.render("admin/formPet", {
