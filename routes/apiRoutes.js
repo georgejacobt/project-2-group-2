@@ -8,7 +8,6 @@ module.exports = function(app) {
       res.json(dbExamples);
     });
   });
-<<<<<<< HEAD
 
   // Twillo Post
   var counter = 0;
@@ -43,8 +42,6 @@ module.exports = function(app) {
     res.end(twiml.toString());
   });
 
-=======
->>>>>>> b0d084e0526f3832489c30db57cfdec92727650e
   app.get("/api/admin", function(req, res) {
     db.User.findAll({ where: { status: "new" } }).then(function(dbUser) {
       res.json(dbUser);
@@ -74,16 +71,12 @@ module.exports = function(app) {
       res.json(dbExample);
     });
   });
-<<<<<<< HEAD
 
   app.post("/api/examples", function(req, res) {
     db.Example.create(req.body).then(function(dbExample) {
       res.json(dbExample);
     });
   });
-=======
-  /*
->>>>>>> b0d084e0526f3832489c30db57cfdec92727650e
   // Create a new user
   app.post("/api/user", function(req, res) {
     db.User.create(req.body).then(function(dbUsers) {
@@ -104,7 +97,7 @@ module.exports = function(app) {
       console.log(dbHome);
     });
   });
-*/
+
   //Get completed payments
   app.get("/api/revenue", function(req, res) {
     db.Appointment.findAll({ where: { complete: 1 } }).then(function(
