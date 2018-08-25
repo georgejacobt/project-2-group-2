@@ -26,6 +26,11 @@ module.exports = function(app) {
     res.render("samLogIn");
   });
 
+  app.get("/logout", function(req, res) {
+    req.logout();
+    res.redirect("/");
+  });
+
   app.get("/formUser", function(req, res) {
     res.render("formUser", {
       msg: "Welcome!"
