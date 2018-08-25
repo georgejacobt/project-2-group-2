@@ -8,9 +8,9 @@ module.exports = function(app) {
     //send the user the route so it'll be redirected in the front end (can't post into a GET request from a POST)
     res.json("/admin");
   }),
-  //if user is created successfully then log them in, otherwise send an error
+  //sign up route
   app.post("/api/signup", function(req, res) {
-    console.log(req.body);
+      console.log(req.body);
     db.Admin.create({
       username: req.body.username,
       password: req.body.password
